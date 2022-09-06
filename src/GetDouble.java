@@ -5,9 +5,9 @@ public class GetDouble {
 
     public double getDouble() {
         Scanner input = new Scanner(System.in);
-        System.out.println(" ____________________________________________________ " );
-        System.out.println("| Digite o valor da temperatura que será convertido: | ");
-        System.out.println(" ____________________________________________________ " );
+        System.out.println(" ___________________________________________________________________ " );
+        System.out.println("|   Digite o valor da temperatura que será convertido:              | ");
+        System.out.println(" ___________________________________________________________________ " );
         try {
             return input.nextDouble();
         } catch (IllegalArgumentException exception) {
