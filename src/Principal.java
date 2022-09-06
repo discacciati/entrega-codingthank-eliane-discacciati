@@ -12,23 +12,41 @@ public class Principal {
             ToCelsius transformToCelsius = new ToCelsius();
             ToKelvin transformToKelvin = new ToKelvin();
             GetDouble inputNumberDouble = new GetDouble();
+            GetSize arraySize =  new GetSize();
             GetUnityTemp unityTemp = new GetUnityTemp();
             MathMedia mathMedia = new MathMedia();
             OutputResult outputResult = new OutputResult();
 
             UnityTemp unityInput = unityTemp.getUnityTemp("entrada que você irá fornecer");
             UnityTemp unityOutput = unityTemp.getUnityTemp("saída que será convertida");
-            double[] temp = new temp[2];
-            double[] result = {1};
             String resultWhile = "S" ;
             double mediaTemp = 0.0;
             double mediaResult = 0.0;
+            int size ;
 
-            try {
-                temp[0] = inputNumberDouble.getDouble();
-            }catch (ArrayIndexOutOfBoundsException exception) {
-                System.err.println("Valor digitado não foi aceito. Será usado valor padrão de 10.");
+            size = arraySize.getSize();
+
+            double[] temp ;
+            double[] result ;
+            temp = new double[size];
+            result = new double[size];
+
+            for (int i = 0 ; i<size ; i++){
+
+
+
+                try {
+                    temp[i] = inputNumberDouble.getDouble();
+                }catch (ArrayIndexOutOfBoundsException exception) {
+                    System.err.println("Valor digitado não foi aceito.");
+                }
+
+
+
+
             }
+
+
 
             while(resultWhile.equalsIgnoreCase("S")) {
                 Scanner input = new Scanner(System.in);
@@ -42,7 +60,7 @@ public class Principal {
                 if(resultWhile.equalsIgnoreCase("S")) {
                     try {
                         int n = temp.length;
-                        inputNumberDouble.getDouble();
+                        temp[n] = inputNumberDouble.getDouble();
                     } catch (ArrayIndexOutOfBoundsException exception) {
                         System.err.println("Valor digitado não foi aceito. Será usado valor padrão de 10.");
                     }
@@ -71,7 +89,6 @@ public class Principal {
             mediaTemp = mathMedia.transform(temp);
             mediaResult = mathMedia.transform(result);
 
-            System.out.println( temp[1]);
             System.out.println(" ____________________________________________________ " );
             System.out.println("|   O resultado da(s) conversão(s) solicitada(s) é : |" );
             outputResult.transform(temp, unityInput, result, unityOutput);
